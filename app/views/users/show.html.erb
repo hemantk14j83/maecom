@@ -1,0 +1,148 @@
+<script type="text/javascript">
+	function onlyNos(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $("#profile").show();
+      $("#orders").hide();
+      $("#address").hide();
+      $('#myprofile').addClass("hovactive");
+
+      $("#myorders").click(function(){
+        $("#profile").hide();
+        $("#address").hide();
+        $("#orders").show();
+        $('#myprofile').removeClass("hovactive");
+        $('#myorders').addClass("hovactive");
+        $('#orders').addClass("minheight");
+        $('#myadd').removeClass("hovactive");
+        return false;
+      });
+
+      $("#myprofile").click(function(){
+        $("#profile").show();
+        $("#orders").hide();
+        $('#profile').addClass("minheight");
+        $('#myprofile').addClass("hovactive");
+        $('#myorders').removeClass("hovactive");
+        $('#myadd').removeClass("hovactive");
+        return false;
+      });
+
+      $("#myadd").click(function(){
+        $("#profile").hide();
+        $("#orders").hide();
+        $("#address").show();
+        $('#myprofile').removeClass("hovactive");
+        $('#myorders').removeClass("hovactive");
+        $('#myadd').addClass("hovactive");        
+        return false;
+      });
+  });
+	
+</script>
+<div class="col s12 m3 l3">
+	<aside id="left-sidebar-nav">
+		<!--<ul id="slide-out" class="side-nav fixed leftside-navigation ps-container ps-active-y" style="width: 240px;margin-top:4%;">https://gist.github.com/tkurki/adc1ab4f8c512e74cde5-->
+		<ul id="slide-out" role="navigation" class="sidebar sidebar-default open" style="">		
+			<li class="user-details cyan darken-2">
+				<div class="row">
+					<div class="col col s4 m4 l4" style="margin-top:4%;margin-bottom:4%;">
+						<%= image_tag("avatar.jpg",:class=>"circle responsive-img valign profile-image")%>
+					</div>
+					<div class="col col s8 m8 l8" style="margin-top:10%">
+						<a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn">
+							<%= current_user.fname%>
+							<!--<i class="mdi-navigation-arrow-drop-down right"></i>-->
+						</a>						
+					</div>
+				</div>
+			</li>
+			<div class="collection">
+				<li><%= link_to "My Profile","#profile",:class=>"collection-item",:id=>"myprofile"%></li>
+				<li class="divider"></li>
+				<li><%= link_to "My Orders","#orders",:class=>"collection-item",:id=>"myorders"%></li>
+				<li class="divider"></li>
+				<li><%= link_to "My Addresses","#address",:class=>"collection-item",:id=>"myadd"%></li>
+				<li><%#= link_to "My Wishlist","#wishlist",:class=>"collection-item"%></li>
+				<li><%#= link_to "My Wallet","#wallet",:class=>"collection-item"%></li>
+			</div>
+	</aside>
+</div>
+<div class="col s12 m9 l9 pull" style="padding-left:5%">
+	<div id="profile">
+		<%= render partial: "users/registrations/update" %>
+	</div>
+	<div id="orders">
+		<div class="">
+			<h5>My Order Details</h5>
+		</div>
+		<%= render @user.orders %>
+	</div>
+	<div id="address">
+		<div class="col s12 m12 l12">
+			<h5>Addresses</h5>
+			<p>Here you can add multiple addresses</p>
+		</div>
+		<div class="col s12 m12 l12">
+			<a class="waves-effect waves-light btn modal-trigger" href="#addmodal">Add New Address</a>
+		</div>
+		<div id="addmodal" class="modal modal-fixed-footer">
+		  <%= form_for ([@user, @user.addresses.build]) do |f| %>			
+			<div class="modal-content">				
+				<div class="input-field">
+					<%= f.text_field :name, :placeholder=>"Ship to",:id=>"lmark", :class=>"validate"%>
+				</div>
+				<div class="input-field">
+					<%= f.text_field :contact, :placeholder=>"Contact Number",:maxlength=>"10",:onkeypress=>"return onlyNos(event,this);",:id=>"lmark", :class=>"validate"%>
+				</div>
+				<div class="input-field">
+					<%= f.text_area :address, :placeholder=>"House No / Building Name / Street Name", :class=>"validate" %>
+				</div>
+				<div class="input-field">
+					<%= f.text_field :landmark, :placeholder=>"Landmark",:id=>"lmark", :class=>"validate"%>
+				</div>
+				<div class="input-field">
+					<%= f.text_field :city, :placeholder=>"City",:id=>"acity", :class=>"validate"%>
+				</div>
+				<div class="input-field">
+					<%= f.text_field :state, :placehoder=>"State",:id=>"astate", :class=>"validate"%>
+				</div>
+				<div class="input-field">
+					<%= f.text_field :zip, :placeholder=>"Zip Code",:maxlength=>"6",:onkeypress=>"return onlyNos(event,this);",:id=>"azip", :class=>"validate"%>
+				</div>	
+			</div>
+			<div class="modal-footer">				
+				<div class="action">
+					<%= f.submit "Add Address", :class=>"btn btn-success waves-effect waves-light" %>
+				</div>
+			</div>
+		  <%end%>
+		</div>	
+		<%= render @user.addresses %>
+		&nbsp;
+	</div>
+	<%#<div id="wishlist">
+		<%#= render partial: @user.wishlist %><%#
+	</div>
+	<div id="wallet">
+		<%#= render partial: @user.wallet %><%#
+	</div>%>
+</div>

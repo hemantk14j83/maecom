@@ -1,0 +1,31 @@
+<% if address.status=='default' %>
+	<%if address.name %>
+		<div class="col s12 m6 l6">
+			<div class="card-panel teal">
+				<div class="card-content white-text">
+					<%=address.name%><br>
+					<%=address.contact%><br>
+					<%=address.address%><br>
+					<%=address.landmark%><br>
+					<%=address.city%><br>
+					<%=address.state%><br>
+					<%=address.zip%>
+				</div>
+			</div>
+		</div>
+	<%end%>
+<%elsif address.status=='other'%>
+	<div class="col s12 m6 l6">
+		<div class="card-panel teal lighten-3">
+			<div class="card-content white-text">
+				<%=address.name%><br>
+				<%=address.contact%><br>
+				<%=address.address%><br>
+				<%=address.landmark%><br>
+				<%=address.city%><br>
+				<%=address.state%><br>
+				<%=address.zip%>
+			</div>
+		</div>
+	</div>
+<%end%>

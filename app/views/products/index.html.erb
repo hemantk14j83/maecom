@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Sub category</th>
+      <th>Type</th>
+      <th>Brand</th>
+      <th>Image url</th>
+      <th>Description</th>
+      <th>Offer test</th>
+      <th>Sales package</th>
+      <th>Features</th>
+      <th>Disclaimer</th>
+      <th>Offer price</th>
+      <th>Base price</th>
+      <th>Dealer price</th>
+      <th>Shipping cost</th>
+      <th>Quantity limit</th>
+      <th>Unit type</th>
+      <th>Vendor</th>
+      <th>Status</th>
+      <!--<th>Uploaded on</th>-->
+      <th>Uploaded by</th>
+      <th>Updated on</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product.category %></td>
+        <td><%= product.sub_category %></td>
+        <td><%= product.type %></td>
+        <td><%= product.brand %></td>
+        <td><%= product.image_url %></td>
+        <td><%= product.description %></td>
+        <td><%= product.offer_test %></td>
+        <td><%= product.sales_package %></td>
+        <td><%= product.features %></td>
+        <td><%= product.disclaimer %></td>
+        <td><%= product.offer_price %></td>
+        <td><%= product.base_price %></td>
+        <td><%= product.dealer_price %></td>
+        <td><%= product.shipping_cost %></td>
+        <td><%= product.quantity_limit %></td>
+        <td><%= product.unit_type %></td>
+        <td><%= product.vendor_id %></td>
+        <td><%= product.status %></td>
+        <td><%#= product.uploaded_on %></td>
+        <td><%= product.uploaded_by %></td>
+        <td><%= product.updated_on %></td>
+        <td><%= product.updated_by %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>

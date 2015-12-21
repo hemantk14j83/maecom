@@ -1,0 +1,43 @@
+<h3 class="flow-text"><b>Account Details</b></h3>
+<%= form_for(@user, as: @user, url: registration_path(@user), html: { method: :put }) do |f| %>
+<div class="form-group waves-effect waves-light">
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fname %><br />
+    <%= f.text_field :fname, autofocus: true %>
+  </div>
+
+  <%# if devise_mapping.confirmable? && @user.pending_reconfirmation? %>
+    <!--<div>Currently waiting confirmation for: <%#= @user.unconfirmed_email %></div>-->
+  <%# end %>
+
+  <div class="field">
+    <%= f.label :password %> <span class="info-text">(leave blank if you don't want to change it)</span><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <span class="info-text">(we need your current password to confirm your changes)</span><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="btn btn-success waves-effect waves-light">
+    <%= f.submit "Update", :class=>"" %>
+  </div>
+</div>
+<% end %>
+
+<!--<h3>Cancel my account</h3>
+
+<p>Unhappy? <%#= button_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>-->
+
+<%#= link_to "Back", :back %>

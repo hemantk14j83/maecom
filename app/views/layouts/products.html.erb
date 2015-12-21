@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buy <%= @product.title %> on - localhost.com</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="main-container">
+    <div class="row">
+      <%= render "includes/header" %>
+    </div>
+    <div class="row">
+      <div id="content" class="col-xs-12">
+        <%= yield %>
+      </div>
+    </div>
+    <div class="row">
+      <%= render "includes/footer" %>
+    </div>
+  </div>
+
+</body>
+</html>

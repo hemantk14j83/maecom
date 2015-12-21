@@ -1,0 +1,241 @@
+$shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+html,body{
+    /*padding-top: 70px;*/height: 100%;
+}
+
+.nav ul a:hover{
+	display: block;
+}
+.custom-navbar{
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+}
+.dropdown-menu{
+	min-width: 122px;
+}
+.table-features {
+	width:500px;
+	margin-bottom:10px;
+}
+.table-features th {
+	font-size: 16px;
+	border-bottom: 1px dotted;
+	font-weight: bold;
+	font-family: sans-serif;
+	color: #3B5487;
+}
+.table-features td {
+	width:50%;
+}
+#pimage{
+	text-align:center;
+}
+#spackage{
+	margin-top:5px;
+	margin-left:5px;
+}
+
+.pro_box_header{
+	
+	display:block;
+	font-size:16px;
+	color:#204F87;
+	/*margin-left:34px;border-bottom:dotted 1px grey;*/
+
+}
+.orders{
+	height: auto;
+	border: 1px solid grey;
+	padding: 5px;
+	margin-bottom: 10px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.pro_box {
+	float: left;
+	height: 275px;
+	width: 210px;
+/*	border: 2px solid #999;
+	text-align: center;*/
+	margin:10px 13px 10px 20px;
+	vertical-align: top;
+        background-color: white;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.pro_box:hover {
+	border: 1px solid #204F87;
+	}
+#navbar_box{
+	margin-top:20px;margin-left:100px;
+	background-color:#9d5233;
+	background-position: top;
+	height: 40px;
+	border-radius: 4px;
+	box-shadow: 0 0 0px 2px #d3d3d3;
+}
+.footersec {
+/*	background:#FAFAFA;*/
+	background:#ffdbac;	
+	margin-bottom:10px;
+	padding:10px 10px 10px 10px;
+	border:1px solid grey;
+
+}
+#footer {
+	/*background-color:#9d5233;
+	background-position: top;
+	height: 25px;
+	font-weight:bold;
+	color:#ffffff;
+	/*border-radius: 4px;
+	box-shadow: 0 0 0px 2px #d3d3d3;*/
+	margin-top:10px;border-bottom:dashed 1px black;
+
+}
+.customsidebar{
+	margin-top:10px;margin-left:20px;
+	display: block;
+	/*background-color:#BA6222;
+	color:black;*/
+}
+.customsidebar ul li{
+	list-style:none;
+}
+.customsidebar ul li a {
+    display: block;
+    line-height: 20px;
+    padding: 0 5px;
+    text-decoration: none;
+    transition: all 0.15s ease 0s;
+    /*color:black;*/
+    font-size:12px;
+}
+.customsidebar ul li a:hover {
+	/*background: #BA6222*/
+	background:#428bca;
+	display:block;
+	border-radius:4px;
+	border-left: 5px solid lightgreen;
+	/*color:#fff;*/
+	color: #5BC0DE;
+}
+.customsidebar ul li:active {
+    /*background: #BA6222*/
+    background:#743000;
+    display:block;
+    border-radius:4px;
+    border-left: 5px solid lightgreen;
+    color:#fff;/*color: #5BC0DE;*/
+}
+.search-form-control{
+	display: inline-block;
+	width: 330px;
+	vertical-align: middle;
+}
+.carousel-inner > .item > img, .carousel-inner > .item > a > img{
+	height:287px;
+}
+.links{
+	text-align:right;
+	margin-right:35px;
+	margin-top:10px;
+	color:#204F87;
+}
+.cart_content{
+	margin-left:34px;
+	display:block;
+	/*font-size:16px;*/
+	color:#204F87;	
+}
+#cart_actions{
+	margin-left:34px;
+	
+}
+.cart_total{
+	margin-top: 5px;
+	background: lightgreen;
+}
+.shipping{
+	background-image: url("http://imageprocessor.websimages.com/width/300/crop/0,0,300x211/www.jebsboutique2008.com/does-free-shipping-work.jpg");
+	background-size:40px 40px;
+	background-repeat: no-repeat;
+}
+.free_shipping{
+	color: Green;
+	font-size: 12;
+}
+
+.drop {
+  position: relative;
+  padding: 0px 10px;
+  ul {
+    position: absolute;
+    left: 0;
+    top: 3em;
+    transition: all 0.3s ease;
+    transform: scale(0);
+    transform-origin: 0 0;
+    box-shadow: $shadow;
+    li {
+      display: block;
+      width: 100%;
+      a {
+        width: 100%;
+        padding: 0 10px;
+        display: inline-block;
+        white-space: pre;
+        background: orange;
+        box-sizing: border-box;
+        &:hover {
+          background: lighten(grey, 30%);
+          color:blue;
+        }
+      }
+    }
+  }
+  &:hover {
+    ul {
+      transform: scale(1);
+    }
+  }
+}
+.info-text{
+	font-size: 12px;
+}
+.hovactive{
+	background: lighten(orange, 30%);
+	color: white;
+	font-weight: bold;
+}
+.minheight{
+	min-height: 450px;
+}
+.addheadsel{
+	background: #2e7d32;
+	color: white;
+	padding:2px;
+}
+.addheadoth{
+	background: lighten(green,40%);
+	color: white;
+	color: white;
+	padding:2px;
+}
+.address{
+	border:1px solid grey;
+	padding:10px;
+	margin-top:2%;
+}
+.card card-image img {
+	display: block;
+	border-radius: 2px 2px 0 0;
+	position: relative;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+}

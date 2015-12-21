@@ -1,0 +1,35 @@
+<%=form_for(@address) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@address.errors.count,"error")%> prohibited this from being saved:</h3>
+      <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="input-field">
+    <i class="material-icons prefix">email</i>
+     <%= f.text_area :address, :placeholder=> "Address" %>
+  </div>
+  <div class="input-field">
+    <i class="material-icons prefix">email</i>
+     <%= f.text_field :city, :placeholder=> "City", :class=>"validate" %>
+  </div>
+  <div class="input-field">
+    <i class="material-icons prefix">email</i>
+     <%= f.text_field :state, :placeholder=> "State", :class=>"validate" %>
+  </div>
+  <div class="input-field">
+    <i class="material-icons prefix">email</i>
+     <%= f.text_field :pincode, :placeholder=> "Pin Code" %>
+  </div>
+  <div class="input-field">
+    <i class="material-icons prefix">email</i>
+     <%= f.text_field :contact_no, :placeholder=> "Contact Number" %>
+  </div>
+  <div class="action">
+    <%= f.submit "Add New Address",:class=>"btn btn-success waves-effect waves-light" %>
+  </div>
+<%end%>

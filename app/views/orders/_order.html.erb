@@ -1,0 +1,33 @@
+<% if order %>
+	<h2>No Orders</h2>
+<%else%>
+<div class="orders">
+	<% if order.user_id==current_user.id %>
+		<h5>Order Id # <%= order.id %></h5>
+		<div class="divider"></div>
+		<div style="margin-top:5px;">
+			<b>Shipping Address</b>: <br>
+			<%= order.name%><br>
+			<%= order.address.gsub(/\,+$/,"<br />") %>
+			<br><%= order.zip%>
+		</div>	<%#= order.selected_items[0].product.title%>		
+		<div class="divider"></div><br>
+		<div class="cyan darken-2 white-text center"><b>Order Details</b></div>
+			<table class="bordered highlight">
+			<tr>
+				<th>Product title</th><th>Ordered Quantity</th><th>Price</th>
+			</tr>
+			<% order.selected_items.each do |s| %>			
+				<tr>
+					<td><%= s.product.title %></td>
+					<td style="text-align:center"><%= s.quantity %></td>
+					<td><%= s.product.offer_price %></td>
+				</tr>
+			<% end %>
+				<tr>
+					<td colspan="2"><b>Total Amount</b></td><td><span style="color:green;"><b><%= order.total_amount %></b></span></td>
+				</tr>	
+			</table>
+	<%end%>
+</div>
+<%end%>
