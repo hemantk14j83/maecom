@@ -1,4 +1,93 @@
-<%= form_for(@order) do |f| %>
+<% totalshippingcost=0%>
+<% shipping_cost=0 %>
+<div class="col s12 m12 l12">
+  <div class="head-panel teal lighten-2">
+    Shipping and Billing Info 
+  </div>
+    <%#= render @users.addresses %>
+  <div class="col s12 m8 l8">
+    <% @address.each do |address| %>
+      <%if address.name %>
+        <div class="col s12 m6 l6">
+          <div class="card-panel teal">
+            <div class="card-content white-text">
+              <%=address.name%><% @name=address.name%><br>
+              <%=address.contact%><% @contact=address.contact%><br>
+              <%=address.address%><% @add=address.address%><br>
+              <%=address.landmark%><% @land=address.landmark%><br>
+              <%=address.city%><% @city=address.city%><br>
+              <%=address.state%><% @state=address.state%><br>
+              <%=address.zip%><% @zip=address.zip%>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+    <div class="col s12 m12 l12">
+      <a class="waves-effect waves-light btn green" href="/myaccount#address">Add New Address</a> 
+    </div>
+  </div>    
+  <div class="col s12 m12 l12">
+  <div class="head-panel teal lighten-2">Order Review</div>
+  <div class="col s12 m12 l12"> 
+    <div class="ord-cart-hd">
+      Your cart contents
+    </div>
+    <table class="table-hover table-responsive">
+      <tr style="border-top:1px solid grey;border-bottom:1px solid grey;">
+        <th>Item</th><th>Product Info</th><th>Quantity</th><th>Price</th><th>Total Price</th>
+      </tr>
+      <% @cart.selected_items.each do |item| %>
+      <tr>
+        <td>
+          <span style="margin-left:10px;">
+            <%= image_tag(item.product.image_url, :height=>"80") %>
+          </span>
+        </td>
+        <td>
+          <%= link_to truncate(item.product.title, :length=>50),:controller=>"products", :action=>"show",:id=>item.product.id %><br>
+          <% if item.product.shipping_cost > 0 %>
+          <img src="http://imageprocessor.websimages.com/width/300/crop/0,0,300x211/www.jebsboutique2008.com/does-free-shipping-work.jpg" height="40px">Shipping Cost : <%= item.product.shipping_cost %>
+          <% totalshippingcost=shipping_cost+item.product.shipping_cost%>
+          <% shipping_cost=totalshippingcost %>
+          <%else%>
+          <span class="free_shipping">
+            <img src="http://us.123rf.com/450wm/arcady31/arcady311305/arcady31130500028/19684146-free-delivery-vector-stamp.jpg" height="60px">
+          </span>
+          <%end%>
+        </td>
+        <td>&nbsp;&nbsp;&nbsp;<%= item.quantity %></td>
+        <td>&#8377 <%= sprintf("%0.02f",item.product.offer_price) %></td>
+        <td>&#8377 <%= sprintf("%0.02f",item.total_price + item.product.shipping_cost) %></td>
+      </tr>
+      <%end%>
+      <tr style="border-top:1px solid grey;">
+        <td colspan="3"><b>Payment Method : <span class="green-text">Cash on Delivery</span></b></td>
+        <td>
+          <b>Total</b><br>
+          <b>Shipping</b><br><br>
+        </td>
+        <td>
+          <b>&#8377 <%= sprintf("%0.02f",@cart.total_price) %></b><br>
+          <% if shipping_cost > 0 %>
+            <b>&#8377 <%= sprintf("%0.02f",shipping_cost) %></b><br><br>
+          <%else%>
+            <b><span class="green-text">Free</span></b><br><br>
+          <%end%>
+        </td>
+      </tr class="cart_total">
+        <td colspan="3"></td>
+        <td style="border-top:1px solid grey; border-bottom:1px solid grey;">
+          <b>Total Payable</b>
+        </td>
+        <td style="border-top:1px solid grey;border-bottom:1px solid grey;">
+          <b>&#8377 <%= sprintf("%0.02f",@cart.total_price) %></b>
+        </td>
+      </tr>
+    </table>
+    <%#= render "carts/cart" %>
+  </div>
+  <%= form_for(@order) do |ord| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -10,32 +99,32 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="actions" style="flow:right;">
+    <%#= ord.button "Place Order;",:controller=>"orders",:action=>"new",:class=>"btn green waves-effect waves-light"%>
+    <%= ord.submit "Place Order",:class=>"btn green waves-effect waves-light"%>
+  </div>
+</div>
+<div class="col hide">
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, :size=>40 %>
+    <%= ord.text_field :name, :size=>40,:value=> @name %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.number_field :phone, :size=>10 %>
+    <%= ord.number_field :phone, :size=>10,:value=>@contact %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
+    <%= ord.text_area :address,:value=>@add %>
   </div>
   <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
+    <%= ord.text_field :city,:value=>@city %>
   </div>
   <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= ord.text_field :state,:value=>@state %>
   </div>
   <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.number_field :zip %>
+    <%= ord.number_field :zip,:value=>@zip %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= ord.submit %>
   </div>
+</div>
 <% end %>

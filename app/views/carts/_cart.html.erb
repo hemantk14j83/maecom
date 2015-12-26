@@ -1,0 +1,51 @@
+<div class="col s12 m12 l12">
+	<div class="cart-hd">
+		Your cart contents
+	</div>
+	<div class="cart_content">
+		<table class="table table-hover table-responsive">
+			<tr>
+				<th>Item</th><th>Product Info</th><th>Quantity</th><th>Price</th><th>Total Price</th>
+			</tr>
+			<% @cart.selected_items.each do |item| %>
+			<tr>
+				<td>
+					<span style="margin-left:10px;">
+						<%= image_tag(item.product.image_url, :height=>"80") %>
+					</span>
+				</td>
+				<td>
+					<%= link_to truncate(item.product.title, :length=>50),:controller=>"products", :action=>"show",:id=>item.product.id %><br>
+					<% if item.product.shipping_cost > 0 %>
+					<img src="http://imageprocessor.websimages.com/width/300/crop/0,0,300x211/www.jebsboutique2008.com/does-free-shipping-work.jpg" height="40px">Shipping Cost : <%= item.product.shipping_cost %>	
+					<%else%>
+					<span class="free_shipping">
+						<img src="http://us.123rf.com/450wm/arcady31/arcady311305/arcady31130500028/19684146-free-delivery-vector-stamp.jpg" height="60px">
+					</span>
+					<%end%>
+				</td>
+				<td>&nbsp;&nbsp;&nbsp;<%= item.quantity %></td>
+				<td>&#8377 <%= sprintf("%0.02f",item.product.offer_price) %></td>
+				<td>&#8377 <%= sprintf("%0.02f",item.total_price + item.product.shipping_cost) %></td>
+			</tr>
+			<%end%>
+			<tr class="cart_total">
+				<td colspan="4"><b>Total Payable Amount</b></td>
+				<td><b>&#8377 <%= sprintf("%0.02f",@cart.total_price) %></b></td>
+			</tr>
+		</table>
+	</div>
+	<!--<div class="col m6 l6 hide-on-small-only">&nbsp;</div>
+	<div id="cart_actions" class="col s12 m6 l6">
+		<table>
+			<tr>
+				<td style="font-size:16px;font-weight:bold;text-align:right;padding-right:5px;">
+					Payment Method : <span style="color:green;">Cash on Delivery</span>
+				</td>
+				<td style="text-align:right;padding-right:25px;">
+					<%#= button_to 'Continue Shopping', '/', :class=>"btn waves-effect waves-light green" %>
+				</td>
+			</tr>
+		</table>
+	</div>-->
+</div>

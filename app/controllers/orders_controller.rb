@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
+    @address=Address.by_user(current_user.id)
     @orders = Order.all
     @user=User.find(current_user)
     @selected_items=SelectedItem.find(@order)
@@ -25,6 +26,8 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @address=Address.by_user(current_user.id)
+    @selected_items=SelectedItem.by_cart(session[:cart_id])
     @cart=current_cart
     if @cart.selected_items.empty?
       redirect_to "/", :notice=>"Your Cart is empty."

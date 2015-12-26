@@ -1,0 +1,26 @@
+<%= form_for(@address) do |f| %>
+<div class="input-field">
+  <%= f.text_field :name, :placeholder=>"Ship to",:id=>"lmark", :class=>"validate"%>
+</div>
+<div class="input-field">
+  <%= f.text_field :contact, :placeholder=>"Contact Number",:maxlength=>"10",:onkeypress=>"return onlyNos(event,this);",:id=>"lmark", :class=>"validate"%>
+</div>
+<div class="input-field">
+  <%= f.text_area :address, :placeholder=>"House No / Building Name / Street Name", :class=>"validate" %>
+</div>
+<div class="input-field">
+  <%= f.text_field :landmark, :placeholder=>"Landmark",:id=>"lmark", :class=>"validate"%>
+</div>
+<div class="input-field">
+  <%= f.text_field :city, :placeholder=>"City",:id=>"acity", :class=>"validate"%>
+</div>
+<div class="input-field">
+  <%= f.text_field :state, :placehoder=>"State",:id=>"astate", :class=>"validate"%>
+</div>
+<div class="input-field">
+  <%= f.text_field :zip, :placeholder=>"Zip Code",:maxlength=>"6",:onkeypress=>"return onlyNos(event,this);",:id=>"azip", :class=>"validate"%>
+</div>
+<div class="action">
+  <%= f.submit "Add Address", :class=>"btn btn-success waves-effect waves-light" %>
+</div>
+<%end%>

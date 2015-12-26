@@ -40,7 +40,13 @@
               <a href="users/sign_in"><i class="mdi-action-perm-identity"></i></a>
             </li>
           <%end%>
-          <li><%= link_to raw("<i class='mdi-action-shopping-cart'></i>"),cart_path(session[:cart_id]) %></li>
+          <li>
+            <% if session[:cart_id] %>
+              <%= link_to raw("<i class='mdi-action-shopping-cart'></i>"),cart_path(session[:cart_id]) %>
+            <%else%>
+              <%= link_to raw("<i class='mdi-action-shopping-cart'></i>"),"/" %>
+            <%end%>
+          </li>
           <li><a href="#"><i class="mdi-navigation-more-vert"></i></a></li>
         </ul>
         <form class="right navbar-form hide-on-med-and-down" role="search">

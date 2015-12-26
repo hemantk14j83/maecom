@@ -3,6 +3,7 @@ class SelectedItem < ActiveRecord::Base
 	belongs_to :product
 	belongs_to :cart
 
+	scope :by_cart, -> cart { where(cart_id: cart) }	
 	def total_price
 		product.offer_price * quantity
 	end
