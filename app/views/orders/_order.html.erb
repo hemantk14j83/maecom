@@ -1,6 +1,8 @@
 <div class="orders">
 	<% if order.user_id==current_user.id %>
-		<h5>Order Id # <%= order.id %></h5>
+		<h5>
+			Order Id # <%= order.id %><br>
+			<span style="font-size:11px;color:grey;">Order Date : <%=order.created_at.to_date %></span></h5>
 		<div class="divider"></div>
 		<div style="margin-top:5px;">
 			<b>Shipping Address</b>: <br>
@@ -9,21 +11,24 @@
 			<br><%= order.zip%>
 		</div>	<%#= order.selected_items[0].product.title%>		
 		<div class="divider"></div><br>
-		<div class="cyan darken-2 white-text center"><b>Order Details</b></div>
-			<table class="bordered highlight">
-			<tr>
+		<div class="cyan darken-2 white-text center"><b>Item Details</b></div>
+			<table class="table-responsive">
+			<tr style="border-top:1px solid grey;border-bottom:1px solid grey;">
 				<th>Product title</th><th>Ordered Quantity</th><th>Price</th>
 			</tr>
 			<% order.selected_items.each do |s| %>			
 				<tr>
-					<td><%= s.product.title %></td>
+					<td><%= link_to truncate(s.product.title, :length=>50),:controller=>"products", :action=>"show",:id=>s.product.id %></td>
 					<td style="text-align:center"><%= s.quantity %></td>
 					<td><%= s.product.offer_price %></td>
 				</tr>
 			<% end %>
-				<tr>
-					<td colspan="2"><b>Total Amount</b></td><td><span style="color:green;"><b><%= order.total_amount %></b></span></td>
+				<tr style="border-top:1px solid grey;">
+					<td colspan=""></td>
+					<td style="border-bottom:1px solid grey;text-align:center;"><b>Total Amount</b></td>
+					<td style="border-bottom:1px solid grey;"><span style="color:green;"><b><%= order.total_amount %></b></span></td>
 				</tr>	
 			</table>
 	<%end%>
+	<div style="margin-bottom:10px;"></div>
 </div>

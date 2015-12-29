@@ -1,0 +1,42 @@
+<div class="col s12 m12 l12">
+	<div class="ord-cart-hd">
+		Open Contacts
+	</div>
+	<table class="table-responsive table-bordered">
+		<tr style="background:lightgrey;">
+			<th>Contacted By</th>
+			<th>Email</th>
+			<th>Contact Number</th>
+			<th>Selected Topic</th>
+			<th width="40%">Message</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+		<% @contact.each do |contact| %>
+			<% if contact.status=='open'%>
+				<tr>
+					<td><%= contact.name %></td>
+					<td><%= contact.email %></td>
+					<td><%= contact.phone %></td>
+					<td><%= contact.topics %></td>
+					<td><%= contact.message %></td>
+					<td>
+						<span style="color:red;font-weight:bold;"><%= contact.status.titlecase %></span>
+					</td>
+					<td>
+							<%= link_to "Update",replied_contact_path(contact.id),method: 'get' %>
+					</td>
+				</tr>
+			<%end%>
+		<%end%>
+	</table>
+	<div class="col-xs-12 col-sm-12 col-md-12 pagination" style="text-align:right">
+      <%= will_paginate @contact %>
+    </div>
+</div>
+<div class="col s12 m12 l12" style="margin-top:10px;">
+	<div class="ord-cart-hd">
+		Recent Resolved Contacts
+	</div>
+	<%= render partial: "closed"%>
+</div>

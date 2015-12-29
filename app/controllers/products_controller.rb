@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   #layout "product", except: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :check_user!, except: [:show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -64,6 +65,13 @@ class ProductsController < ApplicationController
   end
 
   private
+    def check_user!
+      if current_user && current_user.admin || current_user && current_user.vendor?
+        
+      else
+        redirect_to "/"
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])

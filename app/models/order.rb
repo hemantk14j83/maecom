@@ -3,7 +3,8 @@ class Order < ActiveRecord::Base
 	validates :name, :address, :presence => true
 	
 	scope :by_user, -> user { where(user_id: user) }	
-	scope :by_cart, -> cart { where(cart_id: cart) }	
+	scope :by_cart, -> cart { where(cart_id: cart) }
+	scope :by_order, -> order { where(order_id: order) }	
 	
 	def add_selected_items_from_cart(cart)
 		cart.selected_items.each do |item|

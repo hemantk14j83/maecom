@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  #before_action :check_admin,only: [:index]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   
@@ -91,6 +92,13 @@ class OrdersController < ApplicationController
   end
 
   private
+    def check_admin!
+      if current_user && current_user.admin?
+        
+      else
+        redirect_to contactus_path
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])

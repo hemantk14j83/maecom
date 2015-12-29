@@ -1,0 +1,48 @@
+<script type="text/javascript">
+  function onlyNos(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+</script>
+<div class="col l3 hide-on-med-and-below">
+	&nbsp;
+</div>
+<div class="col s12 m6 l6 center">
+	<%= form_for (@contact) do |f| %>
+		<div class="input-field">
+			<%= f.text_field :name, :placeholder=>"Name",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.email_field :email, :placeholder=>"email",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :phone, :placeholder=>"Contact Number",:maxlength=>"12",:onkeypress=>"return onlyNos(event,this);",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :topics, :placeholder=>"Reason for contacting" %>
+		</div>
+		<div class="input-field">
+			<%= f.text_area :message, :placeholder=>"Your Message",:class=>"materialize-textarea",:rows=>"5",:validate=>true %>
+		</div>
+		<div class="actions">
+			<%= f.submit "Submit",:class=>"btn green waves-effect waves-light"%>
+		</div>
+	<%end%>
+</div>
+<div class="col l3 hide-on-med-and-below">
+	&nbsp;
+</div>

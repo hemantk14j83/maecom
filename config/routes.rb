@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers:{sessions: "users/sessions",registrations: "users/registrations"}
   #devise_for :users, controllers: {}
-  
+
   devise_scope :user do
     get "login", to: "users/sessions#new"
     get "/users/sign_out" => 'users/sessions#destroy'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :addresses
   end
   
+  resources :products
   resources :selected_items
 
   resources :users
@@ -22,11 +23,13 @@ Rails.application.routes.draw do
   resources :items
 
   resources :carts
+  resources :contacts do
+    get 'replied', on: :member
+  end
 
   get 'store/index'
-
-  resources :products
-
+  get 'contactus' => 'contacts#new'
+  get ":page" => "pages#show"
   root 'store#index'
 end
   # The priority is based upon order of creation: first created -> highest priority.

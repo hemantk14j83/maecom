@@ -276,3 +276,84 @@ html,body{
 	font-size: 20px;
 }
 .shipadd{margin-left: 10px;font-weight: bold;font-size: 16px;}
+.social{
+	margin:0;
+	padding:0;
+}
+.social ul{
+	margin:0;
+	padding:5px;
+}
+.social ul li{
+	margin:5px;
+	display: inline-block;
+}
+.social i {
+    width: 40px;
+    height: 40px;
+    color: #FFF;
+    background-color: #fff;/*#909AA0;*/
+    font-size: 22px;
+    text-align:center;
+    padding-top: 4px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+.social i:hover {
+    color: #FFF;
+    text-decoration: none;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -ms-transition: all ease 0.3s;
+}
+.fa{
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.fa-lg {
+	font-size: 1.33333333em;
+	line-height: 0.75em;
+	vertical-align: -15%;
+}
+
+.fa-facebook-f:before, .fa-facebook:before {
+content: url('social/facebook.png');
+}
+.fa-twitter-f:before, .fa-twitter:before {
+content: url('social/twitter.png');
+}
+.fa-linkedin-f:before, .fa-linkedin:before {
+content: url('social/linkedin.png');
+}
+.social .fa-facebook:hover { /* round facebook icon
+    background: #4060A5;*/
+    background: #3B5998;
+}
+.social .fa-twitter:hover { /* round twitter icon
+    background: #00ABE3;*/
+    background: #2DAAE1;
+}
+
+.social .fa-google-plus:hover { /* round google plus icon*/
+    background: #e64522;
+}
+.social .fa-linkedin:hover { /* round linkedin icon
+    background: #0094BC;*/
+    background: #0073B2;
+}
+.social .fa-skype:hover { /* round skype icon*/
+    background: #00C6FF;
+}

@@ -1,0 +1,30 @@
+<div class="col s12 m12 l12">
+	<table class="table-responsive table-bordered">
+		<tr style="background:lightgreen;">
+			<th>Contacted By</th>
+			<th>Email</th>
+			<th>Contact Number</th>
+			<th>Selected Topic</th>
+			<th width="40%">Message</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+		<% @contact.each do |contact| %>
+			<% if contact.status=='closed'%>
+				<tr>
+					<td><%= contact.name %></td>
+					<td><%= contact.email %></td>
+					<td><%= contact.phone %></td>
+					<td><%= contact.topics %></td>
+					<td><%= contact.message %></td>
+					<td>
+						<span style="color:green;font-weight:bold;"><%= contact.status.titlecase %></span>
+					</td>
+					<td>
+						<i>Replied on</i> : <br><%= contact.replied_at %>
+					</td>
+				</tr>
+			<%end%>
+		<%end%>
+	</table>
+</div>
