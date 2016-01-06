@@ -357,3 +357,4 @@ content: url('social/linkedin.png');
 .social .fa-skype:hover { /* round skype icon*/
     background: #00C6FF;
 }
+.smalltext{font-size: 12px;}
