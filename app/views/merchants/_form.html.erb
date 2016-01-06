@@ -1,0 +1,73 @@
+<script type="text/javascript">
+  function onlyNos(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+</script>
+<div class="col l3 hide-on-med-and-below">
+	&nbsp;
+</div>
+<div class="col s12 m6 l6 center">
+	<%= form_for (@merchant) do |f| %>
+		<div class="input-field">
+			<%= f.text_field :company, :placeholder=>"Company Name",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_area :address, :placeholder=>"Company/Office Address",:class=>"materialize-textarea",:rows=>"5",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :city, :placeholder=>"City",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :state, :placeholder=>"State",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :pincode, :placeholder=>"pincode",:maxlength=>"6",:onkeypress=>"return onlyNos(event,this);",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :pan_number, :placeholder=>"Pan Number",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :interested_category, :placeholder=>"Any Specific category like - Electronics, Fashion, Groceries etc..",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_area :description, :class=>"materialize-textarea",:rows=>"5",:placeholder=>"Few words describing your products",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :fulfillment, :placeholder=>"Order Fulfillment(You will handle deliveries or Us?",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :poc_name, :placeholder=>"Point of Contact Person",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :poc_designation, :placeholder=>"POC Designation",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.email_field :poc_email, :placeholder=>"POC email",:validate=>true %>
+		</div>
+		<div class="input-field">
+			<%= f.text_field :poc_phone, :placeholder=>"POC phone number",:validate=>true %>
+		</div>
+		<div style="margin-top:10px;"></div>
+		<div class="actions">
+			<%= f.submit "Submit",:class=>"btn green waves-effect waves-light"%>
+		</div>
+	<%end%>
+</div>
+<div class="col l3 hide-on-med-and-below">
+	&nbsp;
+</div>

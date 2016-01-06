@@ -1,0 +1,34 @@
+<div class="col s12 m12 l12">
+	<div class="ord-cart-hd">
+		Rejected Merchants List:
+	</div>
+	<table class="table-responsive table-bordered">
+		<tr style="background:lightgrey;">
+			<th>Id</th>
+			<th>Company Name</th>
+			<th>Company Address</th>
+			<th>POC Name</th>
+			<th>POC Email</th>
+			<th>POC Phone</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+		<% @merchant.each do |merchant| %>
+			<tr>
+				<td><%= merchant.id %></td>
+				<td><%= merchant.company %></td>
+				<td><%= merchant.address %></td>
+				<td><%= merchant.poc_name %></td>
+				<td><%= merchant.poc_email %></td>
+				<td><%= merchant.poc_phone %></td>
+				<td><%= merchant.status.titlecase %></td>
+				<td>
+					<%= link_to "Approve",approve_merchant_path(merchant.id),method: 'get' %>
+				</td>
+			</tr>
+		<%end%>
+	</table>
+	<div class="col-xs-12 col-sm-12 col-md-12 pagination" style="text-align:right">
+      <%= will_paginate @merchant %>
+    </div>
+</div>

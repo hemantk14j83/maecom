@@ -1,0 +1,43 @@
+<div class="col s12 m12 l12">
+	<div class="ord-cart-hd">
+		Merchants
+	</div>
+	<table class="table-responsive table-bordered">
+		<tr style="background:lightgrey;">
+			<th>Id</th>
+			<th>Company Name</th>
+			<th>Company Address</th>
+			<th>POC Name</th>
+			<th>POC Email</th>
+			<th>POC Phone</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+		<% @merchant.each do |merchant| %>
+			<% if merchant.status!="rejected"%>
+				<tr>
+					<td><%= merchant.id %></td>
+					<td><%= merchant.company %></td>
+					<td><%= merchant.address %></td>
+					<td><%= merchant.poc_name %></td>
+					<td><%= merchant.poc_email %></td>
+					<td><%= merchant.poc_phone %></td>
+					<td><%= merchant.status.titlecase %></td>
+					<td>
+						<% if merchant.status=='approved'%>
+							<%= link_to "Reject",reject_merchant_path(merchant.id),method: 'get' %><br>
+						<%else%>
+							<%= link_to "Approve",approve_merchant_path(merchant.id),method: 'get' %>
+						<%end%>
+					</td>
+				</tr>
+			<%end%>
+		<%end%>
+	</table>
+	<div style="margin-top:20px;">
+		<%= link_to "Rejected Merchants", rejected_merchants_path %>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 pagination" style="text-align:right">
+      <%= will_paginate @merchant %>
+    </div>
+</div>

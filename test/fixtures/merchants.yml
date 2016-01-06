@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: MyString
+  address: MyText
+  city: MyString
+  country: MyString
+  pincode: MyString
+  pan_number: MyString
+  tin_number: MyString
+  interested_category: MyString
+  listing_fee: MyString
+  description: MyText
+  fulfillment: MyString
+  poc_name: MyString
+  poc_designation: MyString
+  poc_email: MyString
+  poc_phone: MyString
+
+two:
+  company: MyString
+  address: MyText
+  city: MyString
+  country: MyString
+  pincode: MyString
+  pan_number: MyString
+  tin_number: MyString
+  interested_category: MyString
+  listing_fee: MyString
+  description: MyText
+  fulfillment: MyString
+  poc_name: MyString
+  poc_designation: MyString
+  poc_email: MyString
+  poc_phone: MyString

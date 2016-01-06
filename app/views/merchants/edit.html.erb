@@ -1,0 +1,17 @@
+<div class="col l3 hide-on-med-and-below">
+	&nbsp;
+</div>
+<div class="col s12 m6 l6 center">
+	<h5>Enter Rejection reason</h5>
+	<%= form_for (@merchant) do |f| %>
+		<div class="input-field">
+			<%= f.text_area :reason, :placeholder=>"Enter reason",:class=>"materialize-textarea",:rows=>"5" %>
+		</div>
+		<div class="actions">
+			<%= f.submit "Submit",:class=>"btn orange waves-effect waves-light"%>
+		</div>
+	<%end%>
+</div>
+<div class="col l3 hide-on-med-and-below">
+	&nbsp;
+</div>

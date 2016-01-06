@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :addresses
   end
   
+  resources :adpanel
   resources :products
   resources :selected_items
 
@@ -21,6 +22,13 @@ Rails.application.routes.draw do
   get 'myaccount' => 'users#show'
 
   resources :items
+  get "rejected-merchants"=>"merchants#rejected"
+  #get 'merchants/:id/edit', to: 'merchants#edit', as: 'merchant-rejection-reason'
+  resources :merchants do
+    get 'approve', on: :member
+    get 'reject', on: :member
+    post 'reject'
+  end
 
   resources :carts
   resources :contacts do
@@ -29,6 +37,7 @@ Rails.application.routes.draw do
 
   get 'store/index'
   get 'contactus' => 'contacts#new'
+  get 'merchant-signup' => 'merchants#new'
   get ":page" => "pages#show"
   root 'store#index'
 end

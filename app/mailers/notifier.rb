@@ -3,6 +3,22 @@ class Notifier < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
+  # to employees
+  def new_merchant(merchant)
+    @merchant=merchant
+
+    mail to: "hemant14j83@gmail.com",:subject=>"New Merchant -#{merchant.company}- registered"
+  end
+  #to merchant
+  def to_merchant(merchant)
+    @merchant=merchant
+    mail to: merchant.poc_email, :subject => "Thanks for signing up as Merchant"
+  end
+  #post approval
+  def merchant_approved(merchant)
+    @merchant=merchant
+    mail to: merchant.poc_email, :subject => "Thanks for signing up as Merchant"
+  end
   #   en.notifier.contact_rcd.subject
   #
   def contact_rcd(contact)
