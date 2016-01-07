@@ -1,3 +1,9 @@
+<style type="text/css">
+  .input-field label{
+    margin-left: -15px;
+  }
+</style>
+<div class="col hide-on-small m3 l3">&nbsp;</div>
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -10,100 +16,102 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+<div class="col s12 m6 l6 center">
+  <div class="input-field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title%>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :category %><br>
     <%= f.text_field :category %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :sub_category %><br>
     <%= f.text_field :sub_category %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :type %><br>
     <%= f.text_field :type %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :brand %><br>
     <%= f.text_field :brand %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :image_url %><br>
     <%= f.text_field :image_url %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description,:class=>"materialize-textarea",:rows=>"5" %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :offer_test %><br>
     <%= f.text_field :offer_test %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :sales_package %><br>
     <%= f.text_field :sales_package %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :features %><br>
-    <%= f.text_area :features %>
+    <%= f.text_area :features,:class=>"materialize-textarea",:rows=>"5" %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :disclaimer %><br>
     <%= f.text_field :disclaimer %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :offer_price %><br>
     <%= f.text_field :offer_price %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :base_price %><br>
     <%= f.text_field :base_price %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :dealer_price %><br>
     <%= f.text_field :dealer_price %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :shipping_cost %><br>
     <%= f.text_field :shipping_cost %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :quantity_limit %><br>
     <%= f.number_field :quantity_limit %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%= f.label :unit_type %><br>
     <%= f.text_field :unit_type %>
   </div>
-  <div class="field">
-    <%= f.label :vendor_id %><br>
-    <%= f.text_field :vendor_id %>
+  <!--<div class="input-field">
+    <%#= f.label :vendor_id %><br>
+    <%#= f.text_field :vendor_id %>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
+  <div class="input-field">
+    <%#= f.label :status %><br>
+    <%#= f.text_field :status %>
   </div>
-  <div class="field">
+  <div class="input-field">
     <%#= f.label :uploaded_on %><br>
     <%#= f.datetime_select :uploaded_on %>
   </div>
-  <div class="field">
-    <%= f.label :uploaded_by %><br>
-    <%= f.text_field :uploaded_by %>
+  <div class="input-field">
+    <%#= f.label :uploaded_by %><br>
+    <%#= f.text_field :uploaded_by %>
   </div>
-  <div class="field">
-    <%= f.label :updated_on %><br>
-    <%= f.datetime_select :updated_on %>
+  <div class="input-field">
+    <%#= f.label :updated_on %><br>
+    <%#= f.datetime_select :updated_on %>
   </div>
-  <div class="field">
-    <%= f.label :updated_by %><br>
-    <%= f.text_field :updated_by %>
-  </div>
+  <div class="input-field">
+    <%#= f.label :updated_by %><br>
+    <%#= f.text_field :updated_by %>
+  </div>-->
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
 <% end %>
+<div class="col hide-on-small m3 l3">&nbsp;</div>

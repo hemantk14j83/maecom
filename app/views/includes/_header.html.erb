@@ -59,10 +59,25 @@
           <li>
             <a href="#"><input id="search" type="search" placeholder="search"></a>
           </li>
-          <li><a href="#">Link1</a>
-          <li><a href="#">Link2</a>
-          <li><a href="#">Link3</a>
-          <li><a href="#">Link4</a>
+          <% if user_signed_in? %>
+            <li>
+                <%= link_to "My Account", "/myaccount" %> 
+            </li>
+            <li>
+              <%= link_to "Logout", destroy_user_session_path %>
+            </li>
+          <% else %>
+            <li>
+              <a href="users/sign_in"><i class="mdi-action-perm-identity"></i></a>
+            </li>
+          <%end%>
+          <li>
+            <% if session[:cart_id] %>
+              <%= link_to raw("<i class='mdi-action-shopping-cart'></i>"),cart_path(session[:cart_id]) %>
+            <%else%>
+              <%= link_to raw("<i class='mdi-action-shopping-cart'></i>"),"/" %>
+            <%end%>
+          </li>
         </ul>
       </div>
     </nav>

@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   #layout "product", except: [:index, :new, :edit, :create, :update, :destroy]
+  #before_filter :check_admin!, only: [:index,:destroy]
   before_action :check_user!, except: [:show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
