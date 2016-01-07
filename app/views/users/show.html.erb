@@ -81,6 +81,10 @@
 				<li><%= link_to "My Orders","#orders",:class=>"collection-item",:id=>"myorders"%></li>
 				<li class="divider"></li>
 				<li><%= link_to "My Addresses","#address",:class=>"collection-item",:id=>"myadd"%></li>
+				<% if current_user.admin? %>
+					<li class="divider"></li>
+					<li><%= link_to "Admin Panel","/adpanel",:class=>"collection-item",:id=>"myprofile"%></li>
+				<%end%>
 				<li><%#= link_to "My Wishlist","#wishlist",:class=>"collection-item"%></li>
 				<li><%#= link_to "My Wallet","#wallet",:class=>"collection-item"%></li>
 			</div>
