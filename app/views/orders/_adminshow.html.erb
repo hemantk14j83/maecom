@@ -1,0 +1,41 @@
+<div class="col s12 m12 l12">
+  <h5>Thanks for placing your order</h5>
+  <div class="head-panel teal lighten-2">
+    Order Details for Order Id # <%=@order.id%>
+  </div>
+  <div style="padding:5px;">
+    <div class="divider"></div>
+    <div style="margin-top:5px;">
+      <b>Admin Shipping Address</b>: <br>
+      <%= @order.name%><br>
+      <%= @order.address.gsub(/\,+$/,"<br />") %>
+      <br><%= @order.zip%>
+    </div>  <%#= order.selected_items[0].product.title%>    
+    <div class="divider"></div><br>
+    <div class="cyan darken-2 white-text center"><b>Order Details</b></div>
+      <table class="bordered highlight">
+        <tr>
+          <th>Product</th>
+          <th>Title</th>
+          <th style="text-align:center;">Ordered Quantity</th>
+          <th>Price</th>
+        </tr>
+      <% @order.selected_items.each do |s| %>      
+        <tr>
+          <td><%= image_tag(s.product.image_url, :height=>"80") %></td>
+          <td><%= s.product.title %></td>
+          <td style="text-align:center"><%= s.quantity %></td>
+          <td><%= s.product.offer_price %></td>
+        </tr>
+      <% end %>
+        <tr>
+          <td colspan="2"></td><td><b>Total Amount</b></td><td><span style="color:green;"><b><%= @order.total_amount %></b></span></td>
+        </tr> 
+      </table>
+  </div>
+</div>
+<div class="col s12 m12 l12">
+  <%= link_to "Contact Us", myaccount_path %> in case of any query.<br>
+  <%= link_to "My Account", myaccount_path %>
+</div>
+<p id="notice"><%#= notice %></p>

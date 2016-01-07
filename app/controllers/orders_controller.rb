@@ -8,15 +8,20 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @address=Address.by_user(current_user.id)
-    @orders = Order.all
-    @user=User.find(current_user)
-    @selected_items=SelectedItem.find(@order)
-    @product=Product.find(@selected_items)
-    if @orders.nil
-      render :partial => order
+    if current_user && current_user.admin?
+      @orders=Order.all
     else
-      render :partial => noorder
+      redirect_to "/myaccount"
+      #@address=Address.by_user(current_user.id)
+      #@orders = Order.all
+      #@user=User.find(current_user)
+      #@selected_items=SelectedItem.find(@order)
+      #@product=Product.find(@selected_items)
+      #if @orders?
+      #  render template: "order"
+      ##else
+      #  render template: "noorder"
+      #end
     end
   end
 
