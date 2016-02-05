@@ -9,13 +9,18 @@ Rails.application.routes.draw do
   end
   
   resources :orders
-
+  resources :wishlists do
+    get 'remove', on: :member
+  end
+  
   resources :users do
     resources :addresses
+    resources :wishlists
   end
   
   resources :adpanel
   resources :products
+  
   resources :selected_items
 
   resources :users
@@ -38,6 +43,7 @@ Rails.application.routes.draw do
   get 'store/index'
   get 'contactus' => 'contacts#new'
   get 'merchant-signup' => 'merchants#new'
+  post 'wishlist/new'
   get ":page" => "pages#show"
   root 'store#index'
 end

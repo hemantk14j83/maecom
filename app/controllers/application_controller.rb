@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
   	session[:cart_id] = cart.id
   	cart
   end
+  def store_referrer_location
+    session[:return_to] = request.referrer
+  end
 
   protected
     def configure_u_permitted_parameters

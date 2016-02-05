@@ -3,7 +3,9 @@ class Product < ActiveRecord::Base
 
 	validates :title, :category, :sub_category, :brand, :image_url, :description, :sales_package, :disclaimer, :offer_price, :base_price, :dealer_price, :shipping_cost, :quantity_limit, :unit_type, :vendor_id, :status, :presence => true
 	before_destroy :ensure_not_in_selected_item
-
+	
+	scope :by_status, -> status { where(status: status) }
+	
 	def ensure_not_in_selected_item
 		if selected_items.count.zero?
 			return true

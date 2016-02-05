@@ -15,6 +15,11 @@
     </div>
     <div class="row">
       <div id="content" class="col m12 s12 l12">
+        <% flash.each do |type, message| %>
+          <div class="flash">
+             <%= message %>
+          </div>        
+        <% end %> 
         <%= yield %>
       </div>
     </div>

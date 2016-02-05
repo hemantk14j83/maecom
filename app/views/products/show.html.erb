@@ -1,5 +1,16 @@
-<p id="notice"><%= notice %></p>
-
+<script type="text/javascript">
+  $(document).ready(function(){
+      setTimeout(function(){
+      $("#notice").hide("slow");
+     },2000);
+      setTimeout(function(){
+      $("#error").hide("slow");
+     },3000);
+  });
+</script>
+<% if notice %>
+  <div class="col s12 m12 l12" id="notice"><%= notice %></div>
+<%end%>
 <div id="prdp" class="col s12 m12 l12">
   <div  class="col s12 m4 l4" style="margin-top:15px;">
     <div id="bcrum">
@@ -70,8 +81,13 @@
     <div id="buynow" style="margin-top:5%;font-weight:bold;">
       <%= button_to "Add to Cart", selected_items_path(:product_id => @product), 
       :class => "btn btn-success waves-effect waves-light green", :style => "width:90%; margin-left:10px;" %><br>
-      <%= button_to "Add to Wishlist", selected_items_path(:product_id => @product), 
+      <% if @inwishlist %>
+        <%= button_to "In Wishlist", wishlists_path(:product_id => @product), 
+      :class => "btn btn-warning disabled",:style => "width:90%; margin-left:10px;margin-top:-10px;" %>
+      <%else%>
+        <%= button_to "Add to Wishlist", wishlists_path(:product_id => @product), 
       :class => "btn btn-warning waves-effect waves-light orange",:style => "width:90%; margin-left:10px;margin-top:-10px;" %>
+      <%end%>
     </div>
     <div style="margin-left:10px;margin-top:10px;">
       <img src="http://g-ecx.images-amazon.com/images/G/01/RCX_events/trust_244x66_3._CB344866612_.png"> 

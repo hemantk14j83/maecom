@@ -358,3 +358,7 @@ content: url('social/linkedin.png');
     background: #00C6FF;
 }
 .smalltext{font-size: 12px;}
+#notice{background:#ffe0b2;border:1px dotted grey; padding:5px;font-family: monospace;color: green}
+#error{background:#ffb74d;border:1px dotted grey; padding:5px;font-family: monospace;color: red}
+.wlremove{padding: 10px;background: lightgrey;color: orangered;}
+.wlremove:hover{text-decoration: none;}

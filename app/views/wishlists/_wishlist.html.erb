@@ -1,0 +1,42 @@
+<h5>My Wishlist</h5>
+<% @wishlists.each do |wl| %>
+	<%if wl.user_id==current_user.id%>
+		<table class="table">
+			<tr>
+				<td width="10%"><%= image_tag(wl.product.image_url,:height=>'80px') %></td>
+				<td width="60%">
+					<%= wl.product.title %>
+					<%if wl.product.status=='active'%>
+						<br><span style="color:green">In Stock</span>
+					<%else%>
+						<br><span style="color:red">Sold Out</span>
+					<%end%>
+				</td>
+				<td style="text-align:right;width:30%;">
+					<div class="mrp">
+			          <span style="color:#4FA526;font-size:14px;font-weight:bold;">
+			            &#8377 <%= sprintf("%0.02f",wl.product.offer_price) %>
+			          </span>
+			          [<span style="color:orange;font-size:12px;font-weight:bold;">
+			              &#8377 <%= sprintf("%0.02f",wl.product.base_price - wl.product.offer_price ) %>
+			          </span> Off]<br>
+			          <span style="text-decoration:line-through;color:grey;font-size:12px;">
+			            &#8377 <%= sprintf("%0.02f",wl.product.base_price) %>
+			          </span>
+			        </div>
+			        <div>
+			        <%if wl.product.status=='active'%>
+			          	<%= button_to "Buy Now", selected_items_path(:product_id => wl.product.id), 
+      :class => "btn btn-success waves-effect waves-light green", :style => "width:60%; margin-left:0px;" %>
+      					<br><%= link_to "Remove from wishlist",remove_wishlist_path(wl.id),:class=>"wlremove"%>
+      				<%else%>
+      					<%= button_to "Buy Now", selected_items_path(:product_id => wl.product.id), 
+      :class => "btn btn-warning disabled", :style => "width:60%; margin-left:0px;" %>
+      					<br><%= link_to "Remove from wishlist",remove_wishlist_path(wl.id),:class=>"wlremove"%>
+      				<%end%>
+			        </div>
+				</td>
+			</tr>
+		</table>
+	<%end%>
+<%end%>

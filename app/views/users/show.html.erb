@@ -23,14 +23,18 @@
       $("#profile").show();
       $("#orders").hide();
       $("#address").hide();
+      $("#wishlist").hide();
       $('#myprofile').addClass("hovactive");
 
       $("#myorders").click(function(){
         $("#profile").hide();
         $("#address").hide();
         $("#orders").show();
+        $("#wishlist").hide();
         $('#myprofile').removeClass("hovactive");
         $('#myorders').addClass("hovactive");
+        $('#orders').addClass("minheight");
+        $('#mywl').removeClass("hovactive");
         $('#orders').addClass("minheight");
         $('#myadd').removeClass("hovactive");
         return false;
@@ -39,9 +43,11 @@
       $("#myprofile").click(function(){
         $("#profile").show();
         $("#orders").hide();
+        $("#wishlist").hide();
         $('#profile').addClass("minheight");
         $('#myprofile').addClass("hovactive");
         $('#myorders').removeClass("hovactive");
+        $('#mywl').removeClass("hovactive");
         $('#myadd').removeClass("hovactive");
         return false;
       });
@@ -50,11 +56,30 @@
         $("#profile").hide();
         $("#orders").hide();
         $("#address").show();
+        $("#wishlist").hide();
+        $('#address').addClass("minheight");
         $('#myprofile').removeClass("hovactive");
         $('#myorders').removeClass("hovactive");
         $('#myadd').addClass("hovactive");        
+        $('#mywl').removeClass("hovactive");
         return false;
       });
+      $("#mywl").click(function(){
+        $("#profile").hide();
+        $("#orders").hide();
+        $("#address").hide();
+        $("#wishlist").show();
+        $('#wishlist').addClass("minheight");
+        $('#myprofile').removeClass("hovactive");
+        $('#myorders').removeClass("hovactive");
+        $('#myadd').removeClass("hovactive");
+        $('#mywl').addClass("hovactive");        
+        return false;
+      });
+      if(window.location.hash){
+        var id=window.location.hash;
+        $(id).click();
+      }else{$("#myprofile").click()}
   });
 	
 </script>
@@ -81,6 +106,8 @@
 				<li><%= link_to "My Orders","#orders",:class=>"collection-item",:id=>"myorders"%></li>
 				<li class="divider"></li>
 				<li><%= link_to "My Addresses","#address",:class=>"collection-item",:id=>"myadd"%></li>
+				<li class="divider"></li>
+				<li><%= link_to "My Wishlist","#wishlist",:class=>"collection-item",:id=>"mywl"%></li>
 				<% if current_user.admin? %>
 					<li class="divider"></li>
 					<li><%= link_to "Admin Panel","/adpanel",:class=>"collection-item",:id=>"myprofile"%></li>
@@ -143,8 +170,9 @@
 		<%= render @user.addresses %>
 		&nbsp;
 	</div>
-	<%#<div id="wishlist">
-		<%#= render partial: @user.wishlist %><%#
+	<div id="wishlist">
+		<%= render partial: "/wishlists/wishlist" %>
+		&nbsp;
 	</div>
 	<div id="wallet">
 		<%#= render partial: @user.wallet %><%#
