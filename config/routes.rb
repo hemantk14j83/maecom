@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
   
   resources :adpanel
+  resources :vendors
   resources :products
   
   resources :selected_items
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
   get 'contactus' => 'contacts#new'
   get 'merchant-signup' => 'merchants#new'
   post 'wishlist/new'
+  get 'jiya-collection' => 'mystores#jiyacollection'
   get ":page" => "pages#show"
   root 'store#index'
 end
