@@ -1,0 +1,104 @@
+<style type="text/css">
+  .input-field label{
+    margin-left: -15px;
+  }
+</style>
+<div class="col hide-on-small m3 l3">&nbsp;</div>
+<%= form_for(@vendor) do |f| %>
+  <% if @vendor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>
+
+      <ul>
+      <% @vendor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col s12 m6 l6">
+  <div class="col s6 m6 l6 left">
+      <div class="heading">Vendor Details</div>
+      <div class="input-field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name%>
+      </div>
+      <div class="input-field">
+        <%= f.label :email %><br>
+        <%= f.email_field :email %>
+      </div>
+      <div class="input-field">
+        <%= f.label :address %><br>
+        <%= f.text_area :address,:class=>"materialize-textarea",:rows=>"5" %>
+      </div>
+      <div class="input-field">
+        <%= f.label :proprietor_name %><br>
+        <%= f.text_field :proprietor_name %>
+      </div>
+      <div class="input-field">
+        <%= f.label :manager_email %><br>
+        <%= f.email_field :manager_email %>
+      </div>
+      <div class="input-field">
+        <%= f.label :poc_name %><br>
+        <%= f.text_field :poc_name %>
+      </div>
+      <div class="input-field">
+        <%= f.label :poc_contact %><br>
+        <%= f.text_field :poc_contact %>
+      </div>
+      <div class="input-field">
+        <%= f.label :product_category %><br>
+        <%= f.text_field :product_category %>
+      </div>
+      <div class="input-field">
+        <%= f.label :is_seller %><br>
+        <%= f.text_field :is_seller %>
+      </div>  
+  </div>
+  <div class="col s6 m6 l6 left">
+      <div class="heading">Business Details</div>
+      <div class="input-field">
+        <%= f.label :pan_no %><br>
+        <%= f.text_field :pan_no %>
+      </div>
+      <div class="input-field">
+        <%= f.label :tin_no %><br>
+        <%= f.text_field :tin_no %>
+      </div>
+      <div class="input-field">
+        <%= f.label :comments %><br>
+        <%= f.text_area :comments,:class=>"materialize-textarea",:rows=>"5" %>
+      </div>
+      <div class="input-field">
+        <%= f.label :cod_available %><br>
+        <%= f.text_field :cod_available %>
+      </div>
+      <div class="input-field">
+        <%= f.label :payment_method %><br>
+        <%= f.text_field :payment_method %>
+      </div>
+      <div class="input-field">
+        <%= f.label :payable_name %><br>
+        <%= f.text_field :payable_name %>
+      </div>
+      <div class="input-field">
+        <%= f.label :currency_code %><br>
+        <%= f.text_field :currency_code %>
+      </div>
+      <div class="input-field">
+        <%= f.label :credit_days %><br>
+        <%= f.text_field :return_period %>
+      </div>
+      <div class="input-field">
+        <%= f.label :return_term %><br>
+        <%= f.text_field :return_term %>
+      </div>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Create Vendor",:class=>"btn green waves-effect waves-light"%>
+  </div>
+</div>
+<% end %>
+<div class="col hide-on-small m3 l3">&nbsp;</div>

@@ -1,0 +1,65 @@
+<div class="col s12 m12 l12">
+	<div style="padding:5px;">
+		<p class="heading">Vendor Management</p>
+		<%= link_to raw("+"),new_vendor_path, :class=>"btn btn-success green waves-effect waves-light",:title=>"Add New vendor" %>
+		<%#= link_to "+ New Vendor", new_vendor_path, :class=>"btn btn-success green waves-effect waves-light" %>
+	</div>
+	<table class="table-responsive table-bordered">
+		<tr style="background:lightgrey;">
+			<th class="thpad">Vendor Id</th>
+			<th class="thpad" width="25%">Vendor Details</th>
+			<th class="thpad">Business Details</th>
+			<th class="thpad">Payment Details</th>
+			<th class="thpad">Product Category</th>
+			<th class="thpad">Status</th>
+			<th class="thpad">Action</th>
+		</tr>
+		<% @vendor.each do |vendor| %>
+			<tr>
+				<td class="tdpad"><%= vendor.id %></td>
+				<td class="tdpad">
+					<b>Vendor Name:</b> <%= vendor.name %><br>
+					<b>Payable Name:</b> <%= vendor.payable_name %><br>
+					<b>Proprieter Name:</b> <%= vendor.proprietor_name%><br>
+					<b>POC Name:</b> <%= vendor.poc_name%><br>
+					<b>Address:</b> <%= vendor.address %><br>
+					<b>Contact:</b> <%=%><br>
+					<b>Email:</b> <%=vendor.email%><br>
+					<b>Manager Email:</b> <%=vendor.manager_email %><br>
+					<b>Contact Number:</b> <%= vendor.poc_contact %><br>
+				</td>
+				<td class="tdpad">
+					<b>Business Type:</b> <%= vendor.business_type %><br>
+					<b>COD Available:</b> <%= vendor.cod_available %><br>
+					<b>Is Seller:</b> <%= vendor.is_seller%>
+				</td>
+				<td class="tdpad">
+					<b>PAN Number:</b> <%= vendor.pan_no %><br>
+					<b>Tin No:</b> <%= vendor.tin_no %><br>
+					<b>Payment Method:</b> <%= vendor.payment_method%> <%=vendor.currency_code%><br>
+					<b>Credit Days:</b> <%= vendor.credit_days%><br>
+					<b>Return Period:</b> <%= vendor.return_period %><br>
+					<b>Return Term:</b> <%=vendor.return_term%><br>
+					<b>Email:</b> <%=vendor.email%>
+				</td>
+				<td class="tdpad"><%= vendor.product_category %></td>
+				<td class="tdpad">
+					<b>Status:</b> <%=vendor.status.camelize %><br>
+					<b>Created By:</b> <%= vendor.created_by%><br>
+					<b>Created At:</b> <%= vendor.created_at%><br>
+					<% if vendor.updated_by %>
+						Updated By:</b> <%= vendor.updated_by%>
+						Updated At:</b> <%= vendor.updated_at%>
+					<%end%>
+				</td>
+				<td class="tdpad">
+					<%= link_to "Update", edit_vendor_path(vendor) %> | 
+					<%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<%end%>
+	</table>
+	<div class="col-xs-12 col-sm-12 col-md-12 pagination" style="text-align:right">
+      <%= will_paginate @vendor %>
+    </div>
+</div>
