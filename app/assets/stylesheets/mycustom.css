@@ -2,7 +2,13 @@ $shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
 html,body{
     /*padding-top: 70px;*/height: 100%;
 }
-
+.input-field select{
+    width: 100%;
+    padding: 4px;
+    background-color: transparent;
+    display: block;
+    margin-top:20px;
+}
 .nav ul a:hover{
 	display: block;
 }

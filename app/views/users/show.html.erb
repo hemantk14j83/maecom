@@ -83,6 +83,16 @@
   });
 	
 </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      setTimeout(function(){
+      $("#notice").hide("slow");
+     },2000);
+      setTimeout(function(){
+      $("#error").hide("slow");
+     },3000);
+  });
+</script>
 <div class="col s12 m3 l3">
 	<aside id="left-sidebar-nav">
 		<!--<ul id="slide-out" class="side-nav fixed leftside-navigation ps-container ps-active-y" style="width: 240px;margin-top:4%;">https://gist.github.com/tkurki/adc1ab4f8c512e74cde5-->
@@ -117,6 +127,9 @@
 			</div>
 	</aside>
 </div>
+<% if notice %>
+  <div class="col s12 m9 l9" id="notice"><%= notice %></div>
+<%end%>
 <div class="col s12 m9 l9 pull" style="padding-left:5%">
 	<div id="profile">
 		<%= render partial: "users/registrations/update" %>

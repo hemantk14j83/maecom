@@ -85,15 +85,16 @@
     <%= f.label :unit_type %><br>
     <%= f.text_field :unit_type %>
   </div>
-  <!--<div class="input-field">
-    <%#= f.label :vendor_id %><br>
+  <div class="input-field">
+    <%= f.label :status %><br>
+    <%= f.select :status,['Active','Coming Soon'], :class=>"", :style=>"display:block;" %>
+  </div>
+  <div class="input-field">
+    <%= f.label :vendor_id %><br>
+    <%= f.collection_select(:vendor_id, Vendor.all, :id, :name, {:prompt   => "Select Vendor"}) %> 
     <%#= f.text_field :vendor_id %>
   </div>
-  <div class="input-field">
-    <%#= f.label :status %><br>
-    <%#= f.text_field :status %>
-  </div>
-  <div class="input-field">
+  <!--<div class="input-field">
     <%#= f.label :uploaded_on %><br>
     <%#= f.datetime_select :uploaded_on %>
   </div>
@@ -109,8 +110,8 @@
     <%#= f.label :updated_by %><br>
     <%#= f.text_field :updated_by %>
   </div>-->
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" style="margin-top:10px;">
+    <%= f.submit "Upload Product",:class=>"btn btn-green waves-light waves-effect" %>
   </div>
 </div>
 <% end %>
